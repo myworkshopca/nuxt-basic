@@ -7,6 +7,7 @@
     "start": "nuxt start"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.12.13",
     "nuxt": "^2.13.3"
   }
 }

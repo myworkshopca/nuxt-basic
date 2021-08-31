@@ -12,7 +12,12 @@ v-app
                 v-text-field(
                     filled
                     clearable
+                    v-model="result"
                 )
+            // reminder area.
+            //tr
+            //  td(colspan = "4")
+            //    span {{ result }}
             // first row 7, 8, 9
             tr
               td( 
@@ -23,6 +28,7 @@ v-app
                   large
                   fab
                   color = "deep-purple darken-4"
+                  @click="numberClick(n)"
                 ) 
                   v-icon(
                       color = "grey lighten-5"
@@ -44,6 +50,7 @@ v-app
                   large
                   fab
                   color = "deep-purple darken-4"
+                  @click="numberClick(n)"
                 ) 
                   v-icon(
                       color = "grey lighten-5"
@@ -64,6 +71,7 @@ v-app
                   large
                   fab
                   color = "deep-purple darken-4"
+                  @click="numberClick(n)"
                 ) 
                   v-icon(
                       color = "grey lighten-5"
@@ -73,6 +81,7 @@ v-app
                  large
                  fab
                  color = "red lighten-1"
+                 @click="operatorClick('+')"
                 ) 
                     v-icon mdi-plus
             tr
@@ -137,10 +146,39 @@ v-app
 </template>
 <script>
 export default {
+
     data: function() {
+
         return {
-            iconName: 'mdi-numeric-7-circle'
+            result: "0",
         };
+    },
+
+    methods: {
+
+        /**
+         * number button click
+         */
+        numberClick: function(n) {
+
+            if( this.result === "0" ) {
+                this.result = "" + n;
+            } else {
+                this.result = this.result + n;
+            }
+        },
+
+        /**
+         * operator click
+         */
+        operatorClick: function(operator) {
+
+            if( this.result === "0" ) {
+                // ignore.
+            } else {
+                this.result = this.result + operator;
+            }
+        },
     }
 }
 </script>
